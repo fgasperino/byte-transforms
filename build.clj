@@ -8,10 +8,9 @@
 (defn compile
   [_]
   (b/delete {:path "target"})
+  (b/javac {:src-dirs ["src/byte_transforms"]})
   (b/compile-clj {:basis basis
-                  :src-dirs ["src/main/clojure"]
+                  :src-dirs ["src"]
                   :class-dir class-dir
                   :filter-nses '[byte-transforms]
-                  :ns-compile '[byte-transforms
-                                byte-transforms.CassandraMurmurHash
-                                byte-transforms.CRC64]}))
+                  :ns-compile '[byte-transforms]}))
