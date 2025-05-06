@@ -12,4 +12,6 @@
                   :src-dirs ["src/main/clojure"]
                   :class-dir class-dir
                   :filter-nses '[byte-transforms]
-                  :ns-compile '[byte-transforms]}))
+                  :ns-compile '[byte-transforms
+                                byte-transforms.CassandraMurmurHash
+                                byte-transforms.CRC64]}))
