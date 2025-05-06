@@ -8,9 +8,12 @@
 (defn compile
   [_]
   (b/delete {:path "target"})
-  (b/javac {:src-dirs ["src/byte_transforms"]})
+  (b/javac {:basis basis
+            :src-dirs ["src" "src/byte_transforms"]
+            :class-dir class-dir})
   (b/compile-clj {:basis basis
-                  :src-dirs ["src"]
+                  :src-dirs ["src" "src/byte_transforms"]
                   :class-dir class-dir
                   :filter-nses '[byte-transforms]
-                  :ns-compile '[byte-transforms]}))
+                  :sort :topo
+                  #_#_:ns-compile '[byte-transforms]}))
